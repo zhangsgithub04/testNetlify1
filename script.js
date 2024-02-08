@@ -2,8 +2,8 @@ function drawcurve1()
 {
   const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-let cw = canvas.width = 536;
-let ch = canvas.height = 100;
+//let cw = canvas.width = 536;
+//let ch = canvas.height = 100;
    
 ctx.beginPath();
 ctx.moveTo(0,28)
