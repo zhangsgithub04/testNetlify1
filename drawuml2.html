@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <!-- Principal Class -->
+  <rect x="10" y="10" width="150" height="60" fill="none" stroke="black"/>
+  <text x="20" y="30" font-family="Verdana" font-size="14">Principal</text>
+  <line x1="10" y1="40" x2="160" y2="40" stroke="black"/>
+  <text x="20" y="55" font-family="Verdana" font-size="10">login: String</text>
+  <text x="20" y="70" font-family="Verdana" font-size="10">password: String</text>
+
+  <!-- Teacher Class -->
+  <rect x="200" y="10" width="150" height="80" fill="none" stroke="black"/>
+  <text x="210" y="30" font-family="Verdana" font-size="14">Teacher</text>
+  <line x1="200" y1="40" x2="350" y2="40" stroke="black"/>
+  <text x="210" y="55" font-family="Verdana" font-size="10">id: Number</text>
+  <text x="210" y="70" font-family="Verdana" font-size="10">login: String</text>
+  <text x="210" y="85" font-family="Verdana" font-size="10">password: String</text>
+  <text x="210" y="100" font-family="Verdana" font-size="10">subjects: String[]</text>
+
+  <!-- Student Class -->
+  <rect x="400" y="10" width="150" height="80" fill="none" stroke="black"/>
+  <text x="410" y="30" font-family="Verdana" font-size="14">Student</text>
+  <line x1="400" y1="40" x2="550" y2="40" stroke="black"/>
+  <text x="410" y="55" font-family="Verdana" font-size="10">id: Number</text>
+  <text x="410" y="70" font-family="Verdana" font-size="10">login: String</text>
+  <text x="410" y="85" font-family="Verdana" font-size="10">password: String</text>
+  <text x="410" y="100" font-family="Verdana" font-size="10">grades: Number[]</text>
+
+  <!-- Relationships (represented as lines for simplification) -->
+  <!-- Principal to Teacher -->
+  <line x1="160" y1="35" x2="200" y2="35" stroke="black" marker-end="url(#arrowhead)"/>
+  <!-- Teacher to Student -->
+  <line x1="350" y1="35" x2="400" y2="35" stroke="black" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrowhead definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+    refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+
+</svg>
