@@ -1,0 +1,17 @@
+<script src=”http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+<script>
+var message = 'amit';  
+var key= 'abc123XYZ';
+
+  var encrypted = CryptoJS.AES.encrypt(message, key);  
+  alert(encrypted.toString());
+//U2FsdGVkX1+VzEhW121O4uic0L0BfJiQlRdqE+tr67Q=
+
+  var decrypted = CryptoJS.AES.decrypt(encrypted, key);
+//To view this decrypted message just
+
+alert(decrypted.toString(CryptoJS.enc.Utf8));
+  
+</script>
+
+https://medium.com/@amitasaurus/encrypting-decrypting-a-string-with-aes-js-1d9efa4d66d7
