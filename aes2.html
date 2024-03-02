@@ -44,10 +44,12 @@
 
 	<script>
 		alert("just continue .... "); 
-		key="NWKSKEY",
+		NWKSKEY="466257818e7ac4ac49f7d8566c5f7abb"
 		crypted="QKxs2b+AAAABhQ73tbnOehfyx94iuOvSQtsAOXjMrbi6VPcW"
 		var decrypted = CryptoJS.AES.decrypt(
             crypted, key).toString(CryptoJS.enc.Utf8);
+
+		var decrypted = CryptoJS.AES.decrypt(QKxs2b+AAAABhQ73tbnOehfyx94iuOvSQtsAOXjMrbi6VPcW, NWKSKEY).toString(CryptoJS.enc.Utf8);
 		
 		alert(decyrpted);
 
