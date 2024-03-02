@@ -41,6 +41,17 @@
    <br />
    <button onclick="decrypt()">decrypt</button>
    <br />Decrypted Value: <span id="decrypted"></span>
+
+	<script>
+		key="NWKSKEY",
+		crypted="QKxs2b+AAAABhQ73tbnOehfyx94iuOvSQtsAOXjMrbi6VPcW"
+		var decrypted = CryptoJS.AES.decrypt(
+            crypted, key).toString(CryptoJS.enc.Utf8);
+		
+		alert(decyrpted);
+
+		
+		</script>
 </body>
 
   <!-- https://www.tutorialspoint.com/What-is-JavaScript-AES-Encryption -->
