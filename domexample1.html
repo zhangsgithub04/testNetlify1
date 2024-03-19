@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+  color: green;
+}
+
+h1 {
+  color: red;
+}
+</style>
+
+</head>
+
+<body>
+
+<table>
+	<th> 
+    	<td>name <td>
+        <td>age <td>
+        
+    </th>
+    <tr> 
+    	<td>T <td>
+        <td>13 <td>
+        
+    </tr>
+    <tr> 
+    	<td>M <td>
+        <td>23 <td>
+        
+    </tr>
+    
+
+</table>
+
+<h2>My First Page</h2>
+
+<p style="color:blue;" id="demo">original</p>
+
+<script>
+document.getElementById("demo").innerHTML = "<h1>Hellovbvxcvxzv World!</h1>";
+
+//document.getElementById("demo").innerText = " World!";
+
+
+// Function to create a table
+function createTable(rows, cols) {
+  // Create the table element
+  const table = document.createElement('table');
+  table.style.width = '100%';
+  table.setAttribute('border', '1');
+
+  // Loop to create rows
+  for (let r = 0; r < rows; r++) {
+    const tr = table.insertRow();
+
+    // Loop to create columns
+    for (let c = 0; c < cols; c++) {
+      const td = tr.insertCell();
+      td.appendChild(document.createTextNode(`Cell ${r + 1},${c + 1}`));
+      td.style.border = '1px solid black';
+      td.style.padding = '5px';
+    }
+  }
+
+  // Append the table to the body or another DOM element
+  document.body.appendChild(table);
+}
+
+
+// Function to create a new div and append to the body
+function createAndAppendDiv(content) {
+  // Create a new div element
+  const newDiv = document.createElement('div');
+
+  // Optional: Set some properties on the div, like ID or class
+  newDiv.id = 'myNewDiv';
+  newDiv.className = 'my-custom-class';
+
+  // Optional: Add some content to the div
+  newDiv.innerHTML = content;
+
+  // Append the new div to the body
+  document.body.appendChild(newDiv);
+}
+
+// Call the function to create and append the div
+createAndAppendDiv('<p>Table 1.</p>');
+
+// Call the function with 3 rows and 4 columns
+createTable(5, 3);
+
+createAndAppendDiv('<p>Table 2.</p>');
+
+createTable(4, 2);
+
+</script>
+
+</body>
+</html>
