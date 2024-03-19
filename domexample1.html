@@ -40,7 +40,42 @@ h1 {
 
 <p style="color:blue;" id="demo">original</p>
 
+<input type="text" id ="row" value="100"> Please Number of Rows </input> <br>
+
+<input type="button" value="Click me to create"></input>
+
+<button type="button" id="b1">  Create a Table  </button>
+
 <script>
+
+// Function to handle the button click event
+function handleButtonClick() {
+  // Retrieve the value from the input field with the ID 'myInput'
+  const inputValue = document.getElementById('row').value;
+
+  // You can now use the inputValue for your needs
+  // For demonstration, we'll simply log it to the console
+  console.log(inputValue);
+  
+  createTable(inputValue, 4);
+  
+}
+
+// Function to set up the click event listener on the button
+function setupButtonClickEvent() {
+  // Get the button element by its ID
+  const button = document.getElementById('b1');
+
+  // Add a click event listener to the button
+  button.addEventListener('click', handleButtonClick);
+}
+
+// Call the setup function
+// Ensure this is called after the DOM has fully loaded, e.g., at the end of the body tag,
+// or using window.onload or document.addEventListener('DOMContentLoaded', ...)
+setupButtonClickEvent();
+
+
 document.getElementById("demo").innerHTML = "<h1>Hellovbvxcvxzv World!</h1>";
 
 //document.getElementById("demo").innerText = " World!";
