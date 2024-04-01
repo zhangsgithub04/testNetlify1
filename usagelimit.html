@@ -80,8 +80,10 @@ function addElement(str="Hi there and greetings!") {
    
   if (!queue.isFull())
   {
-   queue.enqueue({"ts":seconds});
-     addElement("add a new entry");
+   var newentry={"ts":seconds}
+   
+   queue.enqueue(newentry);
+     addElement("add a new entry" + JSON.stringify(newentry));
   }
   else
      addElement("still full");
