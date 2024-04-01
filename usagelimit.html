@@ -1,3 +1,5 @@
+<button onclick="validateLimit()">Submit</button>
+
 <script >
 class CircularQueue {
  constructor(size) {
@@ -32,6 +34,7 @@ getFront() {
   if (this.isEmpty()) throw (new Error("No elements in the queue"))
   return this.element[this.front % this.size]
  }
+ 
 clear() {
   this.element = new Array()
   this.length = 0
@@ -40,6 +43,7 @@ clear() {
  }
 }
 
+  queue=new CircularQueue(5)
 </script>
 
 
@@ -48,8 +52,31 @@ clear() {
 
 
 <script>
-  queue=new CircularQueue(5)
+  
 
+
+function validateLimit() {
+  
+ var seconds = new Date().getTime() / 1000;
+  if (queue.isFull())
+  {
+   document.getElementById("demo").innerHTML = "Reach to limit, but let me know check the oldest one is 24 hours older!";
+   
+   entry=queue.getFront();
+   if (seconds-entry.ts>24*60*60)
+   { 
+    entry=queue.dequeue();
+   }
+  }
+   
+  if (!queue.isFull())
+  {
+   queue.enqueue({"ts":seconds}))
+  }
+   
+}
+/*
+ 
 alert(queue.enqueue({"ts":'1'}))
 
 alert(queue.enqueue({"ts":'1'}))
@@ -61,4 +88,5 @@ alert(queue.enqueue({"ts":'1'}))
 alert(queue.enqueue({"ts":'1'}))
 
 alert(queue.enqueue({"ts":'1'}))
+*/
 </script>
