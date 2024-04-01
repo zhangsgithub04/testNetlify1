@@ -43,27 +43,48 @@ clear() {
  }
 }
 const limit=5;
+ const gap=24*60*60;
   queue=new CircularQueue(limit);
 
 
+ 
+function addElement(str="Hi there and greetings!") {
+  // create a new div element
+  const newDiv = document.createElement("div");
+
+  // and give it some content
+  const newContent = document.createTextNode();
+
+  // add the text node to the newly created div
+  newDiv.appendChild(newContent);
+
+  // add the newly created element and its content into the DOM
+  const currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, currentDiv);
+}
+ 
  function validateLimit() {
   
  var seconds = new Date().getTime() / 1000;
   if (queue.isFull())
   {
-   document.getElementById("demo").innerHTML = "Reach to limit, but let me know check the oldest one is 24 hours older!";
+  addElement("Reach to limit, but let me know check the oldest one is 24 hours older!");
    
    entry=queue.getFront();
-   if (seconds-entry.ts>24*60*60)
+   if (seconds-entry.ts>gap)
    { 
     entry=queue.dequeue();
+    addElement("remove longer than the gap!");
    }
   }
    
   if (!queue.isFull())
   {
    queue.enqueue({"ts":seconds});
+     addElement("add a new entry");
   }
+  else
+     addElement("still full");
    
 }
 /*
