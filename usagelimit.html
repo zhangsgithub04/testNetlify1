@@ -53,7 +53,7 @@ function addElement(str="Hi there and greetings!") {
   const newDiv = document.createElement("div");
 
   // and give it some content
-  const newContent = document.createTextNode();
+  const newContent = document.createTextNode(str);
 
   // add the text node to the newly created div
   newDiv.appendChild(newContent);
