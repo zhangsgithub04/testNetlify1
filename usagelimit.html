@@ -42,8 +42,8 @@ clear() {
   this.front = -1
  }
 }
-
-  queue=new CircularQueue(5)
+const limit=5;
+  queue=new CircularQueue(limit);
 </script>
 
 
@@ -71,7 +71,7 @@ function validateLimit() {
    
   if (!queue.isFull())
   {
-   queue.enqueue({"ts":seconds}))
+   queue.enqueue({"ts":seconds});
   }
    
 }
