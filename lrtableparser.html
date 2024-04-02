@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+  <h3> For example </h3>
+  <ol>
+    <li> id + id * id $ should be accepted </li>
+    <li> id * id * id + id + id * id $should be accepted</li>
+    <li> id id * + id $ should be rejected </li>
+    
+  </ol>
+  
+  
+
+<div id="demo">
+  <input type="text" id='statementinput' value='id + id * id $'> </input>
+  
+<button type="button" id='load'>Check Grammar </button>
+</div>
+
+<script > 
+
+function addElement(str="Hi greetings!") {
+  // create a new div element
+  const newDiv = document.createElement("div");
+
+  // and give it some content
+  const newContent = document.createTextNode(str);
+
+  // add the text node to the newly created div
+  newDiv.appendChild(newContent);
+
+  // add the newly created element and its content into the DOM
+  const currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, currentDiv);
+}
+
+//Data Structures
+
+// you can complete this table if anything missing and double check this table 
+var actionTable = {
+  0: {'id':'S5', '(':'S4' }, 
+  1: { '+':'S6', '$':'accept'},
+  2:{'+':'R2', '*':'S7', ')':'R2', '$':'R2'},
+  3: {'+': 'R4', '*':'R4', ')': 'R4', '$':'R4'}, 
+  4:{'id':'S5', '(':'S4'},
+  5: {'+': 'R6', '*':'R6', ')': 'R6', '$':'R6'},
+  6:{'id':'S5', '(':'S4'},
+  7:{'id':'S5', '(':'S4'},
+  8:{'+':'S6', ')':'S11'},
+  9:{'+':'R1', '*':'S7', ')':'R1', '$':'R1'},
+  10:{'+':'R3', '*':'R3', ')':'R3', '$':'R3'},
+  11:{'+':'R5', '*':'R5', ')':'R5', '$':'R5'}
+};
+
+// verify this table with the text
+var gotoTable ={0: {'E':1, 'T':2, 'F':3},
+               4: {'E':8, 'T':2 , 'F':3},
+               6: {'T': 9, 'F':3},
+               7:{'F':10}
+               };
+
+//verify this table with the text
+var ruleTable ={1:'E', 2:'E', 3:'T', 4:'T', 5:'F', 6:'F'};
+
+var rules={1:3, 2:1, 3:3, 4:1, 5:3, 6:1};
+//ideally more detailed allow you check the stack. 
+//1:E->E+T, but now rules tells you how many rounds only.
+
+function test()
+  {
+    lexemes='aaaa + b * di $'.split(' ');
+    console.log(lexemes);
+    for(i=0; i<lexemes.length; i++)
+      console.log(i, lexemes[i]);
+    
+    console.log(gotoTable);
+ console.log(gotoTable['0']);
+ console.log(gotoTable["0"]["T"]);
+
+
+if (gotoTable['1'] && gotoTable['1']['T'])
+  console.log(gotoTable["1"]["T"], "defined, move on");
+else  
+  console.log("undefined, so rejecting ...");
+ 
+  
+console.log(actionTable);
+console.log(actionTable['0']);
+console.log(actionTable['0']['id']);
+    
+    
+  topState="0";
+  nextLexeme='id';
+
+  action=actionTable[topState][nextLexeme];
+  console.log(action);
+    
+     action=actionTable[topState]['main'];
+  if (action ===undefined)
+    console.log("error");
+  
+  statement='id + id * id $'
+  // space as delimiters, a rigid requirement
+  lexemes=statement.split(" ");
+  console.log
+
+  }
+
+function parse(statement='id + id * id $')
+{
+   // space as the delimiter, 
+  // a rigid requirement so we don't have to write a lexical analyzer, instead, just use split. 
+  delimiter=' '; //space to separate
+  lexemes=statement.split(delimiter);
+  //lexemes is an arry of strings
+  
+  console.log(statement, lexemes);
+  
+  //initialize the stack 
+  let stack=[];
+  stack.push('0');
+  acceptflag=false;
+ 
+  
+ //scan the lexemes the statement 
+ //and react based on the tables.
+for (i=0; i<lexemes.length; ){
+  // next input sequentially
+  nextLexeme=lexemes[i]; 
+  // peek the top of the stack
+  state=stack.slice(-1); 
+  
+  console.log(state, nextLexeme);
+  if (!(actionTable[state]&&actionTable[state][nextLexeme]))
+  {
+    console.log("the entry not defined!");
+    acceptflag=false;
+    break;
+  }
+  
+  action=actionTable[state][nextLexeme];
+  console.log("next action is", action);
+
+  switch (action[0])
+  {
+        case "S":
+          stack.push(nextLexeme); 
+          stack.push(action[1]);
+          i++; //shift 
+          break;
+          
+        case "R": 
+          //stack.pop();
+          //stack.pop();
+          
+          lhs=ruleTable[action[1]]
+          topstate=stack.slice(-1); // the last element (top)
+          numofloops=rules[action[1]];
+      addElement("pop"+numofloops + "times" );
+          for(let i =0; i<numofloops;i++)
+            {
+              stack.pop();
+              stack.pop();
+              
+            }
+          topstate=stack.slice(-1);
+      
+      /*while (!(gotoTable[topstate]&&gotoTable[topstate][lhs]))
+          {
+            
+            stack.pop();
+            stack.pop();
+            lhs=ruleTable[action[1]]
+            topstate=stack.slice(-1);
+          } //the text book appears to miss this part.
+      */
+          newstate=gotoTable[topstate][lhs];
+          console.log("push", lhs, newstate);
+      addElement("push"+lhs+newstate );
+          
+          stack.push(lhs);
+          stack.push(newstate);
+          //no shift
+          break;
+        case "a": acceptflag=true; 
+          break;
+          
+        default:
+          console.log("table might be wrong");
+          
+      }
+  console.log("Stack", stack, JSON.stringify(stack), acceptflag);
+  
+  if (acceptflag===true)
+    break;
+  }
+
+if (acceptflag===false)
+{  result="error";
+    console.log("error");
+}
+else 
+{   result="accept";
+    console.log("accept");
+}
+  answer=document.createElement('div');
+  answer.innerHTML=result;
+  document.body.append(answer);
+}
+
+function handler()
+  {
+    b1=document.getElementById("statementinput");
+    statement=b1.value.trim();
+    
+    if (statement.slice(-2)!=' $') // if not ending with space+$ 
+      statement=statement+' $'
+    
+    parse(statement); //
+    
+  }
+
+
+// entry point
+window.onload = function(event) 
+{
+  console.log("start"+ event);
+  b1=document.getElementById("load");
+  b1.onclick=handler;
+  
+  console.log("Provide an expression and click the check Grammar");
+  
+  //test();
+
+}
+
+
+</script>
+
+    <h2>
+    The expression terminator, $, will be appended automatically, so you don't need to type it into the input control. </h2>
+  
+  <h1>Table Driven Bottom-up LR Parser in Javascript</h1>
+  <h2>When input, use ONE space to separate neighbor lexemes to make tokenization easier a shortcut so you can focus on the synatx rules not the lexical rules. </h2>
+  
+  <h2>AVOID extra spaces may create errors. So make sure use only ONE space to separate the lexemes. Minor issue though.</h2>
+
+</body>
+</html>
