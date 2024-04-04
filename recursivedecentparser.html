@@ -1,8 +1,8 @@
 <ol>
 
-  <li>  <pre> <expr> -> <term> {(+|-) <term>} </pre>  </li>
+  <li>  <cd> <expr> -> <term> {(+|-) <term>} </cd>  </li>
   
-  <li> <pre> <term> -> <factor> {(*|/) <factor>} </pre> </li>
+  <li> <program> <term> -> <factor> {(*|/) <factor>} </program> </li>
   
 </ol>
 
@@ -64,9 +64,19 @@
       expr();
       
     }
+  
 function whichToken()
   {
-      if (lexeme=="+") nextToken=ADD_OP
+    nextToken='ID';
+    
+      switch (lexeme){
+        case "+": nextToken=ADD_OP;
+                  break;
+        case "-": nextToken=ADD_OP;
+                  break;
+      }
+    
+            
   }
   
   function lex() 
