@@ -45,7 +45,7 @@
   function initialize(statement = '5 - 3')
     {
        lexemes = statement.split(' ');
-       addElement(json.stringfy(lexemes));
+       addElement(JSON.stringify(lexemes));
       
        length=lexemes.length; 
       addElement(length) ;  //length.toString();
