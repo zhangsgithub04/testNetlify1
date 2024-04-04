@@ -44,7 +44,9 @@
   const MULT_OP=3;
   const DIV_OP=4;
   const LEFT_PAREN=5;
-  const RIGHT_PAREN=5;
+  const RIGHT_PAREN=6;
+  const IDENT=7;
+  const INT_LIT=8;
   
 
   function run()
@@ -67,16 +69,27 @@
   
 function whichToken()
   {
-    nextToken='ID';
-    
       switch (lexeme){
         case "+": nextToken=ADD_OP;
                   break;
         case "-": nextToken=ADD_OP;
                   break;
+        case "*": nextToken=MULT_OP;
+                  break;
+        case "/": nextToken=DIV_OP;
+                  break;
+        case "(": nextToken=LEFT_PAREN;
+                  break;
+        case ")": nextToken=RIGHT_PAREN;
+                  break;
+          
+        default: 
+          nextToken=IDENT; // temporarily ID, to be separated from Literals new.
+    
       }
     
-            
+    if (!isNaN(lexeme)) 
+      nextToken=INT_LIT;
   }
   
   function lex() 
