@@ -1,8 +1,9 @@
 <ol>
 
-  <li>  <plaintext> <expr> -> <term> {(+|-) <term>} </plaintext>  </li>
+  <li>   EXPR -> TERM {(+|-) TERM}  </li>
   
-  <li> <plaintext> <term> -> <factor> {(*|/) <factor>} </plaintext> </li>
+  <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
+  <li> FACTOR -> id | int_constant | ( EXPR ) </li>
   
 </ol>
 
