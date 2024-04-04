@@ -6,7 +6,8 @@
   
 </ol>
 
-    <input value="8 + 9 $"> </input>
+    <input type="text" value="8 + 9 $"> </input>
+    <button onclick="run()">Parse me</button>
 
 <script>
   
@@ -34,6 +35,12 @@
   let lexemes = null;
   let length=0;
   let lexeme=null;
+
+  function run()
+    {
+      initialize();
+      
+    }
   
   function initialize(statement = '5 - 3')
     {
