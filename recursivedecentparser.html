@@ -7,7 +7,7 @@
   
 </ol>
 
-    <input type="text" value="8 + 9"> </input>
+    <input type="text" id="statement" value="8 + 9"> </input>
     <button onclick="run()">Parse me</button>
 
 <script>
@@ -24,7 +24,7 @@
 
   // add the newly created element and its content into the DOM
   const currentDiv = document.getElementById("div1");
-  document.body.insertBefore(newDiv, currentDiv);
+  document.body.insertBefore(newDiv, currentDiv); // if div1 exists, after it. Otherwise ...
 }
   
 
@@ -53,6 +53,7 @@
   function run()
     {
       initialize();
+      document.getElementById("statement").trime().value;
       
     }
   
@@ -67,6 +68,7 @@
       
       lex();
       expr();
+      addElement("Success!");
       
     }
   
