@@ -157,19 +157,19 @@ expr();
 if (nextToken == RIGHT_PAREN)
 lex();
 else
-        error();
+        error("Expecting )");
     }  /* End of if (nextToken == ... */
 /* It was not an id, an integer literal, or a left
    parenthesis */
 else
-      error();
+      error("Expecting (");
   }  /* End of else */
   addElement("Exit <factor>\n");;
 }  /* End of function factor */
 
-  function error()
+  function error(e)
   {
-      addElement("error"); 
+      addElement(e); 
 
   }
 
