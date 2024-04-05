@@ -52,9 +52,9 @@
 
   function run()
     {
-      initialize();
-      document.getElementById("statement").trime().value;
       
+      const statement=document.getElementById("statement").trime().value;
+      initialize(statement);
     }
   
   function initialize(statement = '5 - 3')
