@@ -54,11 +54,13 @@
     {
       
       const statement=document.getElementById("statement").trime().value;
+      
       initialize(statement);
     }
   
   function initialize(statement = '5 - 3')
     {
+      addElement(statement);
        lexemes = statement.split(' ');
        addElement(JSON.stringify(lexemes));
       
