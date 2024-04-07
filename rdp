@@ -1,0 +1,12 @@
+In EBNF (Extended Backus-Naur Form), this could look as follows:
+<pre>
+expr -> term {[ ('+' | '-') term ]}
+term -> factor {[ ('*' | '/') factor ]}
+factor -> base {[ '^' exponent ]}
+base -> '(' expr ')' | identifier | number
+exponent -> '(' expr ')' | identifier | number
+
+</pre>
+
+
+https://stackoverflow.com/questions/17162919/unambiguous-grammar-for-exponentiation-operation
