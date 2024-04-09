@@ -158,7 +158,7 @@ factor();
    */
 function factor() { 
   addElement("Enter <factor>\n");
-                   addElement(lexeme + nextToken);
+                   addElement(lexeme + ": " + nextToken);
 /* Determine which RHS */
 if (nextToken == IDENT || nextToken == INT_LIT)
 /* Get the next token */
