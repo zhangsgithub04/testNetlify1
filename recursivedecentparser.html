@@ -37,6 +37,8 @@
   var lexeme=null;
   var nextToken=null;
   
+  var flag=true;
+  
   var length=0;
   var index=0;
   
@@ -70,7 +72,13 @@
       
       lex();
       expr();
-      addElement("Success!");
+      if (flag)
+        msg="Success";
+      else
+        msg="Failed";
+      
+        addElement(msg);
+      
       
     }
   
@@ -178,6 +186,7 @@ else
   function error(e="Something unexpected! An Error!")
   {
       addElement(e); 
+      flag=false;
 
   }
 
