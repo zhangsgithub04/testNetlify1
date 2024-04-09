@@ -123,6 +123,9 @@ function expr() {
    the next token and parse the next term */
 
   while (nextToken == ADD_OP || nextToken == SUB_OP) { 
+    
+    addElement(nextToken);
+    
     lex();
     
     term(); 
@@ -145,6 +148,7 @@ function term() {
   /* As long as the next token is * or /, get the
    next token and parse the next factor */
 while (nextToken == MULT_OP || nextToken == DIV_OP) { 
+      addElement(nextToken);
   lex();
 factor(); 
                                                     }
@@ -161,17 +165,24 @@ function factor() {
                    addElement(lexeme + ": " + nextToken);
 /* Determine which RHS */
 if (nextToken == IDENT || nextToken == INT_LIT)
-/* Get the next token */
+{
+    addElement(nextToken);
+  /* Get the next token */
     lex();
-/* If the RHS is ( <expr>), call lex to pass over the
+}
+  /* If the RHS is ( <expr>), call lex to pass over the
    left parenthesis, call expr, and check for the right
    parenthesis */
 else {
 if (nextToken == LEFT_PAREN) {
+      addElement(nextToken);
 lex();
 expr();
 if (nextToken == RIGHT_PAREN)
+{
+      addElement(nextToken);
 lex();
+}
 else
         error("Expecting )");
     }  /* End of if (nextToken == ... */
