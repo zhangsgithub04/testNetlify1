@@ -39,7 +39,9 @@
   
   var length=0;
   var index=0;
+
   
+  const SENTINEL=0;
   const ADD_OP=1;
   const SUB_OP=2;
   const MULT_OP=3;
@@ -70,12 +72,13 @@
       
       lex();
       expr();
+      
       if (flag)
         msg="Success";
       else
         msg="Failed";
       
-        addElement(msg);
+      addElement(msg);
       
       
     }
@@ -107,14 +110,18 @@ function whichToken()
   
   function lex() 
   {
-   if (index==length) 
+   
+    if (index==length) 
    {
      mesg("No more lexeme, exausted");
+     nextToken=SENTINEL;
+     
    }
-     lexeme=lexemes[index++]; //side effect
-    whichToken();
-    
-    
+   
+    else{
+    lexeme=lexemes[index++]; //side effect
+     whichToken();
+   }
   }
   
 function expr() { 
@@ -204,10 +211,9 @@ else
 
   }
 
-  function  mesg(e="No more lexeme, exausted")
+  function  mesg(e="ok")
   {
     addElement(e); 
-      flag=false;
   }
 
   
