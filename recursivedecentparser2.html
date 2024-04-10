@@ -1,9 +1,16 @@
-<h1> Grammar of a tinny language (expression, term and factor )</h1>
+<h1> Version 2 Grammar of a tinny language (expression, term and factor, unambigious exponentiation )</h1>
 <ol>
   <li>   EXPR -> TERM {(+|-) TERM}  </li> 
   <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
-  <li> FACTOR -> id | int_constant | ( EXPR ) </li>
+  <li> FACTOR ->  BASE {[ ^ exponent ]}
+    <li>base -> '(' expr ')' | identifier | number </li>
+
+<li>exponent -> '(' expr ')' | identifier | number <li>
+  
 </ol>
+
+Pay attention that this grammar likely is wrong with respect to the power operation, because no consideration of the right association of the power operator:(.
+This is for illustration purpose of expanded grammar. Next version will support right association!  
 
     <input type="text" id="statement" value="8 + 9"> </input>
     <button onclick="run()">Parse me</button>
