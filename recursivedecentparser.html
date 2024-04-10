@@ -58,17 +58,21 @@
       const statement=document.getElementById("statement").value.trim();
       
       initialize(statement);
+
+      
     }
   
   function initialize(statement = '5 - 3')
     {
-      addElement(statement);
+      addElement("<hr> Analyzing "+ statement + "<br>");
        lexemes = statement.split(' ');
        addElement(JSON.stringify(lexemes));
       
        length=lexemes.length; 
        index=0;
+      
       addElement(length) ;  //length.toString();
+
       
       lex();
       expr();
