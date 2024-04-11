@@ -34,7 +34,9 @@
   var lexemes = null;
   var lexeme=null;
   var nextToken=null;
+  
   var flag=true;
+  
   var length=0;
   var index=0;
 
@@ -52,7 +54,6 @@
 
   function run()
     {
-
       
       const statement=document.getElementById("statement").value.trim();
       
@@ -62,8 +63,11 @@
     }
   
   function initialize(statement = '5 - 3')
-    
     {
+        nextToken=null;
+  
+       flag=true;
+      
       addElement("<hr> Analyzing "+ statement + "<br>");
        lexemes = statement.split(' ');
        addElement(JSON.stringify(lexemes));
@@ -72,11 +76,6 @@
        index=0;
       
       addElement(length) ;  //length.toString();
-
-
-
-  nextToken=null;
-  flag=true;
 
       
       lex();
@@ -88,6 +87,8 @@
         msg="Failed";
       
       addElement(msg);
+      
+      addElement(flag? "Success!": "Failed sorry!"); 
       
       
     }
@@ -148,6 +149,10 @@ function expr() {
     lex();
     
     term(); 
+  }
+  if (nextToken!=SENTINEL)
+  {
+    error("More tokens found, but not for a ligitimate statement");
   }
   
   addElement("Exit <expr>\n");
