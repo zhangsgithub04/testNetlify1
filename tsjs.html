@@ -2,7 +2,7 @@
 
 <script>
 
-  const tsCode = 'let num: number = 123;';
+  const tsCode = 'let num: number = 123; let num2: number=234; let num3: number = num+num2; alert(num3);';
   const jsCode = window.ts.transpile(tsCode);
 
   document.write(jsCode);
