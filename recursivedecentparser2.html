@@ -57,6 +57,7 @@ This is for illustration purpose of expanded grammar. Next version will support 
   const RIGHT_PAREN=6;
   const IDENT=7;
   const INT_LIT=8;
+  const EXPONENTIATION = 9;
   
 
   function run()
@@ -115,7 +116,8 @@ function whichToken()
                   break;
         case ")": nextToken=RIGHT_PAREN;
                   break;
-          
+        case "^":   nextToken=EXPONENTIATION;
+                  break;
         default: 
           nextToken=IDENT; // temporarily ID, to be separated from Literals new.
     
