@@ -91,6 +91,8 @@ This is for illustration purpose of expanded grammar. Next version will support 
       
       addElement(msg);
       
+      addElement(flag? "Success!": "Failed sorry!"); 
+      
       
     }
   
@@ -150,6 +152,10 @@ function expr() {
     lex();
     
     term(); 
+  }
+  if (nextToken!=SENTINEL)
+  {
+    error("More tokens found, but not for a ligitimate statement");
   }
   
   addElement("Exit <expr>\n");
