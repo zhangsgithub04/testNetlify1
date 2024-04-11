@@ -71,6 +71,10 @@ This is for illustration purpose of expanded grammar. Next version will support 
   
   function initialize(statement = '5 - 3')
     {
+        nextToken=null;
+  
+       flag=true;
+      
       addElement("<hr> Analyzing "+ statement + "<br>");
        lexemes = statement.split(' ');
        addElement(JSON.stringify(lexemes));
