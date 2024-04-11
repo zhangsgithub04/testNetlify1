@@ -1,5 +1,8 @@
 <script src="https://unpkg.com/typescript@latest/lib/typescript.js"></script>
 
+<script type="text/javascript" src="https://unpkg.com/sval"></script>
+<!-- https://github.com/Siubaak/sval -->
+
 <script>
 
   const tsCode = 'let num: number = 123; let num2: number=234; let num3: number = num+num2; alert(num3);';
@@ -7,4 +10,9 @@
 
   document.write(jsCode);
 
+  // Parse and run the code
+sval.run(`
+  console.log('Hello World')
+`)
+  
 </script>
