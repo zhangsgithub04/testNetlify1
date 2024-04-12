@@ -2,9 +2,9 @@
 <ol>
   <li>   EXPR -> TERM {(+|-) TERM}  </li> 
   <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
-  <li> FACTOR ->  BASE {[ ^ exponent ]}
-    <li>base -> '(' expr ')' | identifier | number </li>
-
+  
+  <li> FACTOR ->  exp [ ^ factor ]
+    
 <li>exponent -> '(' expr ')' | identifier | number <li>
   
 </ol>
