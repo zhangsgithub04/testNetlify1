@@ -2,7 +2,7 @@
 <ol>
   <li> STATEMENT-> ASSIGNMENTSTATEMENT </li>
   
-  <li> ASSIGNMENTSTATEMENT-> id = EXPR </li>
+  <li> ASSIGNMENTSTATEMENT-> id = EXPR; </li>
   <li>   EXPR -> TERM {(+|-) TERM}  </li> 
   <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
   
@@ -60,7 +60,9 @@ This is for illustration purpose of expanded grammar. Next version will support 
   const RIGHT_PAREN=6;
   const IDENT=7;
   const INT_LIT=8;
-  
+  const EXPONENTIATION=9;
+  const ASSIGNMENT=10;
+   const SEMICOLON=11;                
 
   function run()
     {
@@ -89,7 +91,7 @@ This is for illustration purpose of expanded grammar. Next version will support 
 
       
       lex();
-      expr();
+      statement();
 
         if (nextToken!=SENTINEL)
   {
@@ -123,6 +125,12 @@ function whichToken()
                   break;
         case ")": nextToken=RIGHT_PAREN;
                   break;
+        case "^":   nextToken=EXPONENTIATION;
+                  break;
+        case "=": nextToken=ASSIGNMENT;
+                  break;
+        case ';': nextToken=SEMICOLON;
+                break;
           
         default: 
             if (!isNaN(lexeme)) 
@@ -150,6 +158,37 @@ function whichToken()
      whichToken();
    }
   }
+
+  function statement()
+    {
+      
+  addElement("Enter <statement>\n");
+      assignmentstatement();
+      addElement("Exit <statement>\n");
+    }
+
+    function assignmentstatement()
+    {
+  addElement("Enter <assignmentstatement>\n");
+  
+      if (nextToken==IDENT)
+      {
+        lex();
+        if (nextToken==ASSIGNMENT)
+        {
+          lex();
+          expr();
+        }
+        else
+          error("Expecting  = operator");
+      }
+      else
+      {
+        error("Expecting an id");
+      }
+    
+      addElement("Exit <assignmentstatement>\n");
+    }
   
 function expr() { 
   
