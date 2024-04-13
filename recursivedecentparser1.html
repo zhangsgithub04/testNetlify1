@@ -80,6 +80,11 @@
       
       lex();
       expr();
+
+        if (nextToken!=SENTINEL)
+  {
+    error("More tokens found, but not for a ligitimate statement");
+  }
       
       if (flag)
         msg="Success";
@@ -110,12 +115,14 @@ function whichToken()
                   break;
           
         default: 
-          nextToken=IDENT; // temporarily ID, to be separated from Literals new.
+            if (!isNaN(lexeme)) 
+                nextToken=INT_LIT;
+            else 
+              nextToken=IDENT; // temporarily ID, to be separated from Literals now.
     
       }
     
-    if (!isNaN(lexeme)) 
-      nextToken=INT_LIT;
+    
   }
   
   function lex() 
@@ -150,10 +157,7 @@ function expr() {
     
     term(); 
   }
-  if (nextToken!=SENTINEL)
-  {
-    error("More tokens found, but not for a ligitimate statement");
-  }
+
   
   addElement("Exit <expr>\n");
   
