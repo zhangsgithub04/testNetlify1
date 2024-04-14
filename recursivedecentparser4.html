@@ -1,16 +1,15 @@
-<h1> Version 3 Grammar of a tinny language (expression, term and factor, unambigious exponentiation with right associtivity considered! )</h1>
+<h1> Version 4 Grammar of a tinny language (expression, term and factor, again without exponentation operator, to avoid left recursion in version 3. Exponentation will be supported 
+via built-in function later !!! </h1>
 <ol>
   <li> STATEMENT-> ASSIGNMENTSTATEMENT </li>
   
   <li> ASSIGNMENTSTATEMENT-> id = EXPR ; </li>
   <li>   EXPR -> TERM {(+|-) TERM}  </li> 
   <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
-<li>factor -> '(' expr ')' | identifier | number <li>
+<li>factor -> '(' expr ')' | identifier | literal constant <li>
   
 </ol>
 
-Pay attention that this grammar likely is wrong with respect to the power operation, because no consideration of the right association of the power operator:(.
-This is for illustration purpose of expanded grammar. Next version will support right association!  
 
     <input type="text" id="statement" value="8 + 9"> </input>
     <button onclick="run()">Parse me</button>
@@ -159,7 +158,7 @@ function whichToken()
   function statement()
     {
       
-  addElement("Enter <statement>\n");
+      addElement("Enter <statement>\n");
       assignmentstatement();
       addElement("Exit <statement>\n");
     }
@@ -177,6 +176,7 @@ function whichToken()
           expr();
             if (nextToken==SEMICOLON)
             {
+              mesg("An assignment Statement has been found so far!");
                lex();
             }
           else 
