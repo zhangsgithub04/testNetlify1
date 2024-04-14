@@ -3,7 +3,7 @@
   <li>   EXPR -> TERM {(+|-) TERM}  </li> 
   <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
   
-  <li> FACTOR ->  exp [ ^ exponent ]
+  <li> FACTOR ->  expr [ ^ exponent ]
     
 <li>exponent -> '(' expr ')' | identifier | number <li>
   
@@ -200,7 +200,7 @@ factor();
   addElement("Enter <factor>\n");
 
   /* Parse the first factor */
-  exp();
+  expr();
 
   /* If the next token is ^, get the
    next token and parse the factor, i.e. in the place of exponent */
