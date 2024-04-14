@@ -1,4 +1,6 @@
-<h1> Version 3 Grammar of a tinny language (expression, term and factor, unambigious exponentiation with right associtivity considered! )</h1>
+<h1> Version 3 Grammar of a tinny language (expression, term and factor, unambigious exponentiation with right associtivity considered! However, this grammar 
+  can't be implemented by a recursive decent based parser!!! because it is left recursve (indirectly in this case)!!!! )</h1>
+<p>so, after you click the button, leave the page, because it is ending up with calling recursively forever!!!!</p>
 <ol>
   <li>   EXPR -> TERM {(+|-) TERM}  </li> 
   <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
