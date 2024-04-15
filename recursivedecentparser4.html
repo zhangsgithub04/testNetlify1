@@ -11,7 +11,8 @@ via built-in function later !!! </h1>
 </ol>
 
 
-    <input type="text" id="statement" value="id = 8 + 9 ;"> </input>
+<textarea name="input" cols="40" rows="5" id="statement" value="id = 8 + 9 ;"></textarea>
+
     <button onclick="run()">Parse me</button>
 
 <script>
@@ -63,21 +64,21 @@ via built-in function later !!! </h1>
   function run()
     {
       
-      const statement=document.getElementById("statement").value.trim();
+      const s=document.getElementById("statement").value.trim();
       
-      initialize(statement);
+      initialize(s);
 
       
     }
   
-  function initialize(statement = '5 - 3')
+  function initialize(s = '5 - 3')
     {
         nextToken=null;
   
        flag=true;
       
       addElement("<hr> Analyzing "+ statement + "<br>");
-       lexemes = statement.split(' ');
+       lexemes = s.split(' ');
        addElement(JSON.stringify(lexemes));
       
        length=lexemes.length; 
@@ -86,7 +87,7 @@ via built-in function later !!! </h1>
    
       lex();
       
-      statement1(); //conflict with statement string otherwise
+      statement(); //conflict with statement string otherwise
 
         if (nextToken!=SENTINEL)
   {
@@ -156,7 +157,7 @@ function whichToken()
    }
   }
 
-  function statement1()
+  function statement()
     {
       
       addElement("Enter <statement>\n");
