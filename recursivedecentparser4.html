@@ -83,11 +83,10 @@ via built-in function later !!! </h1>
        length=lexemes.length; 
        index=0;
       
-      addElement("There are" + length + "lexemes!") ;  //length.toString();
-
-      
+   
       lex();
-      statement();
+      
+      statement1(); //not in
 
         if (nextToken!=SENTINEL)
   {
@@ -108,7 +107,6 @@ via built-in function later !!! </h1>
   
 function whichToken()
   {
-    addElement(lexeme); 
     
       switch (lexeme){
         case "+": nextToken=ADD_OP;
@@ -158,7 +156,7 @@ function whichToken()
    }
   }
 
-  function statement()
+  function statement1()
     {
       
       addElement("Enter <statement>\n");
