@@ -108,6 +108,8 @@ via built-in function later !!! </h1>
   
 function whichToken()
   {
+    addElement(lexeme); 
+    
       switch (lexeme){
         case "+": nextToken=ADD_OP;
                   break;
