@@ -11,7 +11,7 @@ via built-in function later !!! </h1>
 </ol>
 
 
-    <input type="text" id="statement" value="8 + 9"> </input>
+    <input type="text" id="statement" value="id = 8 + 9 ;"> </input>
     <button onclick="run()">Parse me</button>
 
 <script>
@@ -86,7 +86,7 @@ via built-in function later !!! </h1>
    
       lex();
       
-      statement1(); //not in
+      statement1(); //conflict with statement string otherwise
 
         if (nextToken!=SENTINEL)
   {
@@ -150,7 +150,7 @@ function whichToken()
    }
    
     else{
-      mesg(index);
+
     lexeme=lexemes[index++]; //side effect
      whichToken();
    }
