@@ -5,10 +5,10 @@
   <li>   EXPR -> TERM {(+|-) TERM}  </li> 
   <li>  TERM -> FACTOR {(*|/) FACTOR}  </li>
   
-  <li> FACTOR ->  expr [ ^ exponent ]
+  <li> FACTOR -> EXPR [ ^ EXPONENT ]
     
-<li>exponent -> '(' expr ')' | identifier | number <li>
-  
+<li>EXPONENT -> ( EXPR ) | IDENTIFIER | LITERAL <li>
+
 </ol>
 
 Pay attention that this grammar is good with respect to the exponentation operation with supporting right associativity!  
