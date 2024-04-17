@@ -58,16 +58,16 @@
   const INT_LIT=8;
   const EXPONENTIATION=9;
   const ASSIGNMENT=10;
-   const SEMICOLON=11; 
-   const PRINT=12;
+  const SEMICOLON=11; 
+  const PRINT=12;
   
 
   function run()
     {
       
-      const statement=document.getElementById("statement").value.trim();
+      const s=document.getElementById("statement").value.trim();
       
-      initialize(statement);
+      initialize(s);
 
       
     }
@@ -90,10 +90,10 @@
       
       statement(); //not in
 
-        if (nextToken!=SENTINEL)
-  {
-    error("More tokens found, but not for a ligitimate statement");
-  }
+      if (nextToken!=SENTINEL)
+      {
+        error("More tokens found, but not for a ligitimate statement");
+      }
       
       if (flag)
         msg="Success";
@@ -146,13 +146,9 @@ function whichToken()
             else 
             {
               nextToken=IDENT; // temporarily ID, to be separated from Literals now.
-              isakeyword();
-              
+              whichkeyword();
             }
-    
       }
-    
-    
   }
   
   function lex() 
