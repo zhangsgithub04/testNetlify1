@@ -107,7 +107,7 @@
       
     }
 
-  function isakeyword()
+  function whichkeyword()
     {
       switch (lexeme)
         {
@@ -138,6 +138,7 @@ function whichToken()
                   break;
         case ';': nextToken=SEMICOLON;
                 break;
+        case ',': nextToken=COMMA;
           
         default: 
             if (!isNaN(lexeme)) 
@@ -174,8 +175,9 @@ function whichToken()
   function statement()
     {
       
-      addElement("Enter <statement>\n");
+      addElement("Enter <statement>, expecting a id or the keyword print \n");
       // this assumes the first non-terminal of all the alternate rules are unique! 
+      
       switch (nextToken) // lookahead.
         {
           case IDENT:
@@ -183,7 +185,9 @@ function whichToken()
             break;
           case PRINT:
             printstatement();
-            
+            break;
+          default:
+            error("not a statement");
         }
       
       addElement("Exit <statement>\n");
@@ -193,8 +197,7 @@ function whichToken()
     {
   addElement("Enter <assignmentstatement>\n");
   
-      if (nextToken==IDENT)
-      {
+     // if (nextToken==IDENT){
         lex();
         if (nextToken==ASSIGNMENT)
         {
@@ -211,40 +214,31 @@ function whichToken()
         else
           error("Expecting  = operator");
       }
-      else
-      {
-        error("Expecting an id");
-      }
+      //else{error("Expecting an id");} // done in the statement level already.
     
       addElement("Exit <assignmentstatement>\n");
     }
+  
   function printstatement()
     {
   addElement("Enter <printstatement>\n");
-  
-      if (nextToken==PRINT)
-      {
+
         lex();
-        if (nextToken==ASSIGNMENT)
+        if (nextToken==IDENT)
         {
+          mesg("A print variable has been found so far!");
           lex();
-          expr();
-            if (nextToken==SEMICOLON)
+            while (nextToken==COMMA)
             {
-              mesg("An assignment Statement has been found so far!");
                lex();
+                if (nextToken==IDENT)
+                   mesg("Another variable has been found so far!");
+              else 
+                  error("Expecting  an variable ID");
             }
           else 
-              error("Expecting  ; operator");
-        }
-        else
-          error("Expecting  = operator");
-      }
-      else
-      {
-        error("Expecting an id");
-      }
-    
+              error("Expecting  ID");
+      
       addElement("Exit <assignmentstatement>\n");
     }
 
