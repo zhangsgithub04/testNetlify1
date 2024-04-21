@@ -1,0 +1,20 @@
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/reactdom@18/umd/react-dom.development.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  
+  // Define a component called Greetings
+  function Greetings() {
+    return <h1>Hello readers, Thankyou for reading this blog !</h1>;
+  }
+
+  // Render the component to the DOM
+  ReactDOM.render(
+    <Greetings />,
+    
+    document.getElementById("root")
+  );
+  
+</script>
