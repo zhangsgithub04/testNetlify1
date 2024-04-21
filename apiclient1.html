@@ -5,7 +5,9 @@
 msgEle=document.getElementById('msg');
   
 fetch('http://boardx-service-dev.boardx.us')
-  .then(response => {res=response.json()
+  .then(response => {res=response.json();
+                     alert("fetched"); 
+                     
         msgEle.innerHTML=JSON.stringify(res}
 
 )
