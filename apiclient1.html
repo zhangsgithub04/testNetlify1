@@ -9,19 +9,33 @@
 <script>
   const element = document.getElementById("myBtn");
 element.addEventListener("click", myFunction);
-
+  
+function f1()
+  {
+    
+  fetch('http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/author/')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+    
+  }
 function myFunction() {
 
+  f1();
+
+  
   
   fetch('http://boardx-service-dev.boardx.us')
     .then(response => {res=response.json();
                      alert("fetched"); 
                       document.getElementById("demo").innerHTML = "Hello World";
+                       
             msgEle.innerHTML=JSON.stringify(res);
   )
   .then(data => console.log(data));
  
 
+  
   
 }
   
