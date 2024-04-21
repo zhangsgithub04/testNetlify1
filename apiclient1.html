@@ -4,6 +4,18 @@
 
 <p id="demo">
 
+  <button id="myBtn1">Try it</button>
+
+<p id="demo1"></p>
+
+<script>
+document.getElementById("myBtn1").addEventListener("click", displayDate);
+
+function displayDate() {
+  document.getElementById("demo1").innerHTML = Date();
+}
+</script>
+
 
 
 <script>
@@ -36,8 +48,8 @@ function f1()
   
 function myFunction() {
 alert("click handler...");
-  f1();
-  f2();
+  //f1();
+  //f2();
 }
   
 
