@@ -1,0 +1,14 @@
+<div id="msg"> </div>
+
+
+<script>
+msgEle=document.getElementById('msg');
+  
+fetch('http://boardx-service-dev.boardx.us')
+  .then(response => {res=response.json()
+        msgEle.innerHTML=JSON.stringify(res}
+
+)
+  .then(data => console.log(data));
+
+</script>
