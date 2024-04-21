@@ -14,7 +14,7 @@
 
 <script>
   
-  const url = "https://jsonplaceholder.typicode.com/todos";
+  const url = "http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/author/";
 const options = {
   method: "POST",
   headers: {
@@ -22,28 +22,23 @@ const options = {
     "Content-Type": "application/json;charset=UTF-8",
   },
   body: JSON.stringify({
-    a: 10,
-    b: 20,
+    firstName: 'stephen',
+    lastName: 'Clinton',
   }),
 };
+  
 fetch(url, options)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
   });
   
-      fetch("https://jokes-by-api-ninjas.p.rapidapi.com/v1/jokes", {
-      method: "GET",
-  
-      headers: {
-        "X-RapidAPI-Key": "your-api-key",
-        "X-RapidAPI-Host": "jokes-by-api-ninjas.p.rapidapi.com",
-      },
-  
-  })
+      fetch("http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/author/", {
+      method: "GET"  })
       .then((response) => response.json())
+        
       .then((data) => {
-        setJoke(data[0].joke);
+        alert(data);
         console.log(data);
       })
       .catch((error) => console.log(error));
