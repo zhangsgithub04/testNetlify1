@@ -19,12 +19,10 @@ function f1()
   .catch(error => console.error(error));
     
   }
-function myFunction() {
 
-  f1();
-
-  
-  
+  function f2()
+    {
+      
   fetch('http://boardx-service-dev.boardx.us')
     .then(response => {res=response.json();
                      alert("fetched"); 
@@ -34,9 +32,12 @@ function myFunction() {
   )
   .then(data => console.log(data));
  
-
+    }
   
-  
+function myFunction() {
+alert("click handler...");
+  f1();
+  f2();
 }
   
 
