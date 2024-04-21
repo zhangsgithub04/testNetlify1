@@ -12,7 +12,26 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.js"></script>
 
-<javascript>
+<script>
+  
+  const url = "https://jsonplaceholder.typicode.com/todos";
+const options = {
+  method: "POST",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json;charset=UTF-8",
+  },
+  body: JSON.stringify({
+    a: 10,
+    b: 20,
+  }),
+};
+fetch(url, options)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+  
       fetch("https://jokes-by-api-ninjas.p.rapidapi.com/v1/jokes", {
       method: "GET",
   
@@ -29,16 +48,12 @@
       })
       .catch((error) => console.log(error));
   
-</javascript>
+</script>
+
     
     <script type="text/babel">
   
-      // Define a component called Greetings
-  function Greetings() {
-    return <h1>Hello readers, Thankyou for reading this blog !</h1>;
-  }
-
-function Joke() {
+   function Joke() {
 
   return (
     <div>
@@ -47,6 +62,13 @@ function Joke() {
     </div>
   );
 }
+      
+      // Define a component called Greetings
+  function Greetings() {
+    return <h1>Hello readers, Thankyou for reading this blog !</h1> <Joke />;
+  }
+
+
 
       
   // Render the component to the DOM
@@ -54,8 +76,6 @@ function Joke() {
     
     <div>
       <Greetings />
-      <Joke />
-    
     </div>,
     
     document.getElementById("root")
