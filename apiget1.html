@@ -1,0 +1,29 @@
+
+<script>
+// Construct your API endpoint
+const apiEndpoint = 'http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/book';
+
+// Use the fetch API to make the GET request
+fetch(apiEndpoint, {
+  method: 'GET', // The method is GET by default, but it's good to be explicit
+  headers: {
+    'Content-Type': 'application/json' // Specify that you expect a JSON response
+  },
+  // No body is needed for a GET request
+})
+.then(response => {
+  if (!response.ok) {
+    // Check if the response status is not OK (200-299), and throw an error if so
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json(); // Parse the JSON response body
+})
+.then(data => {
+  console.log(data); // Handle the response data, e.g., render it in your UI
+})
+.catch(error => {
+  // Catch any errors that occur during the fetch
+  console.error('There was a problem with the fetch operation:', error);
+});
+
+</script>
