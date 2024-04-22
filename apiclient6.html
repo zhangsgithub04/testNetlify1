@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+// Construct your API endpoint
+const apiEndpoint = 'http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/genre';
+
+// The data you want to send in the request body
+const genreData = {
+  name: 'Fantasy'
+};
+
+// Use the fetch API to make the POST request
+fetch(apiEndpoint, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(genreData) // Convert the JavaScript object into a JSON string
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json(); // Parse the JSON response body
+})
+.then(data => {
+  console.log(data); // Handle the response data
+})
+.catch(error => {
+  console.error('There was a problem with the fetch operation:', error);
+});
+
+</script>
