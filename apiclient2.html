@@ -13,6 +13,8 @@
     <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.js"></script>
 
 <script>
+
+  alert("in fetch");
   
   const url = "http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/author/";
 const options = {
@@ -26,6 +28,8 @@ const options = {
     lastName: 'Clinton',
   }),
 };
+  alert("in fetch");
+
   
 fetch(url, options)
   .then((response) => response.json())
@@ -68,13 +72,12 @@ fetch(url, options)
       
   // Render the component to the DOM
   ReactDOM.render(
-    
-    <div>
-      <Greetings />
-    </div>,
-    
+   
+      <Greetings />,
+
     document.getElementById("root")
   );
+      
 </script>
 
   </body>
