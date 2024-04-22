@@ -23,8 +23,8 @@ async function postData(url = "", data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-  endPoint= 'http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/book/'
-  dataObject={title:'test', author:{firstName: 'stephen', lastName: 'jason'}, genere:'fantasy', publishDate: Date()};
+  endPoint= 'http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/genere/'
+  dataObject={name:'test'};
 
   alert("calling ... ");
 postData(endPoint, dataObject).then((data) => {
