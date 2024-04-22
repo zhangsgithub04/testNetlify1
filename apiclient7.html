@@ -1,0 +1,34 @@
+<script>
+
+/ Construct your API endpoint
+const apiEndpoint = 'http://nestjs300-env.eba-ydsmswc6.us-east-2.elasticbeanstalk.com/api/genre';
+
+// The data you want to send in the request body
+const genreData = {
+  name: 'Fantasy'
+};
+
+// Use the fetch API to make the POST request
+fetch(apiEndpoint, {
+  method: 'POST', // Method type
+  headers: {
+    'Content-Type': 'application/json' // Specify the content type as JSON
+  },
+  body: JSON.stringify(genreData) // Convert the JavaScript object to a JSON string
+})
+.then(response => {
+  if (!response.ok) {
+    // Check if the response status is not OK (200-299)
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json(); // Parse the JSON response body
+})
+.then(data => {
+  console.log(data); // Handle the response data (e.g., display it or use it in the app)
+})
+.catch(error => {
+  // Catch any errors that occur during the fetch
+  console.error('There was a problem with the fetch operation:', error);
+});
+  
+</script>
